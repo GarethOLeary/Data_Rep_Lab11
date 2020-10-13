@@ -1,0 +1,13 @@
+import React from 'react';
+
+export class Footer extends React.Component{
+
+    render(){
+        return(
+            // Display
+            <div>
+             <h1>This is the footer component.</h1>
+            </div>
+        );
+    }
+}
