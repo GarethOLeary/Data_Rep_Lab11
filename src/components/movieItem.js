@@ -5,7 +5,7 @@ export class MovieItem extends React.Component {
 
     render() {
         return (
-
+            // displays data from movies
             <div>
                 <Card>
                     <Card.Header>{this.props.movie.Title}</Card.Header>
