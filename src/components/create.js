@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 
 export class Create extends React.Component {
 
@@ -46,6 +47,20 @@ export class Create extends React.Component {
         alert("Movie: " + this.state.Title + " "
             + this.state.Year + " "
             + this.state.Poster);
+
+        const newMovie = {
+            title: this.state.Title,
+            year: this.state.Year,
+            poster: this.state.Poster
+        }
+        // Post request made to the url and passing object up
+        axios.post('http://localhost:4000/api/movies', newMovie)
+            .then((res) => {
+                console.log(res);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
     }
 
     render() {
@@ -56,7 +71,7 @@ export class Create extends React.Component {
         // button added
         return (
             <div className='App'>
-                <form onSubmit={this.onSubmit}> 
+                <form onSubmit={this.onSubmit}>
                     <div className="form-group">
                         <lable>Add Movie Title: </lable>
                         <input type='text'

@@ -13,11 +13,11 @@ export class Read extends React.Component {
     // axios package
     componentDidMount() {
         // retrieves information from json file
-        axios.get('https://jsonblob.com/api/jsonblob/520c3b5e-0312-11eb-a6af-cbf00d776032')
+        axios.get('http://localhost:4000/api/movies')
             .then(
                 // setting data to movies array
                 (response) => {
-                    this.setState({ movies: response.data.Search })
+                    this.setState({ movies: response.data.movies })
                 }
 
             )
