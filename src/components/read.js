@@ -17,7 +17,7 @@ export class Read extends React.Component {
             .then(
                 // setting data to movies array
                 (response) => {
-                    this.setState({ movies: response.data.movies })
+                    this.setState({ movies: response.data })
                 }
 
             )
