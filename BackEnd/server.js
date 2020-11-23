@@ -56,7 +56,7 @@ app.get('/api/movies', (req, res) => {
     //     }
 
     // ];
-    
+
     // find records of database and send them back
     MovieModel.find((err, data) => {
         res.json(data);
@@ -78,6 +78,18 @@ app.get('/api/movies/:id', (req, res) => {
     MovieModel.findById(req.params.id, (err, data) => {
         res.json(data);
     })
+})
+
+// listens for put request that passes in id
+app.put('/api/movies/:id', (req, res) => {
+    console.log("Update movie: " + req.params.id);
+    console.log(req.body);
+    // method that makes an asynchronous call to database
+    // when request is finished it sends back some data
+    MovieModel.findByIdAndUpdate(req.params.id, req.body, { new: true },
+        (err, data) => {
+            res.send(data);
+        })
 })
 
 // listens to post request at url
