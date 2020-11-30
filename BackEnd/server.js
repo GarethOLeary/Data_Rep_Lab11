@@ -92,6 +92,17 @@ app.put('/api/movies/:id', (req, res) => {
         })
 })
 
+// listens for http delete method
+app.delete('/api/movies/:id', (req, res) => {
+    // logs to console and pulls out id from url
+    console.log("Delete Movie: " + req.params.id);
+
+    //deletes record and sends back data
+    MovieModel.findByIdAndDelete(req.params.id, (err, data) => {
+        res.send(data);
+    })
+})
+
 // listens to post request at url
 // Pulls title,year and poster out of body
 app.post('/api/movies', (req, res) => {

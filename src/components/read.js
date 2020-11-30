@@ -4,6 +4,12 @@ import axios from 'axios';
 
 export class Read extends React.Component {
 
+    constructor() {
+        super();
+
+        this.ReloadData = this.ReloadData.bind(this);
+    }
+
     // object called state
     // stores data we want to use in class Read
     state = {
@@ -19,7 +25,20 @@ export class Read extends React.Component {
                 (response) => {
                     this.setState({ movies: response.data })
                 }
-
+            )
+            // logging error to console if any problems
+            .catch((error) => {
+                console.log(error)
+            });
+    }
+    // gets all the information from the database 
+    ReloadData() {
+        axios.get('http://localhost:4000/api/movies')
+            .then(
+                // setting data to movies array
+                (response) => {
+                    this.setState({ movies: response.data })
+                }
             )
             // logging error to console if any problems
             .catch((error) => {
@@ -32,7 +51,7 @@ export class Read extends React.Component {
         return (
             <div>
                 <h1>This is the read component.</h1>
-                <Movies movies={this.state.movies}></Movies>
+                <Movies movies={this.state.movies} ReloadData={this.ReloadData}></Movies>
             </div>
         );
     }
